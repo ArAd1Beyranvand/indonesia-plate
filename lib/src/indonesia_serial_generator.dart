@@ -4,12 +4,8 @@ import 'package:plate_core/plate_core.dart';
 
 import 'indonesia_validators.dart';
 
-/// Generates plausible values for fixtures and demos. Pure Dart.
-///
 /// Fills the groups of an `IndonesiaPlates.car` or `motorcycle` spec. [area]
-/// fixes the area code (`'B'`); otherwise one is drawn from
-/// [IndonesiaAreaCodes]. The number is 1–4 digits with no leading zero, the
-/// suffix 1–3 letters; the expiry month is 01–12.
+/// fixes the area code; otherwise one is drawn from [IndonesiaAreaCodes].
 abstract final class IndonesiaSerialGenerator {
   static const String _letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

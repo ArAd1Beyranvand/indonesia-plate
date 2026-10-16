@@ -32,14 +32,8 @@ import 'indonesia_services.dart';
 /// as the canvas allows about the measured centre. The car serial is also
 /// narrower here than FE-Schrift: DejaVu Bold is wider, and the glyph is
 /// width-limited by its cell. `plate_core` is unchanged.
-///
-/// Measured off the goldens (DejaVu Bold): every glyph centre within ~4 mm
-/// and every row centre within 1 mm of the artwork, but ink heights of car
-/// 43.3 / 62.5, motorcycle 23.3 / 39.5, diplomatic 40 / 63.6 and expiry
-/// ~16 / 22. The glyphs already fill their cells' width (42.5 mm in a 46 mm
-/// car cell, against FE-Schrift's 42), so taller slots would not help: the
-/// shortfall is the bold face's aspect against the condensed FE-Schrift and
-/// DIN, and closes only with a condensed face in the host's theme.
+/// Taller slots would not help: the glyphs already fill their cells' width,
+/// so the shortfall closes only with a condensed face in the host's theme.
 abstract final class _Layout {
   // Car, 460×135.
   static const double carWidth = 460;
@@ -112,12 +106,6 @@ abstract final class _Layout {
 
   /// The serial is 62.8 mm of ink centred at y 90.3 (Army); 94 is as tall as
   /// the plate allows about that centre.
-  ///
-  /// Measured off the goldens (DejaVu Bold): Army serial ink y 69.5–109.3,
-  /// x 149–435 against 58.9–121.8, x ~142–438; police serial y 79.3–116.4
-  /// against 75.6–124.7, region y 17.7–50.5 against 15.3–55.7. Centres and
-  /// widths agree within ~2 mm; the heights are 63–81% because the bold face
-  /// is width-limited in a 37 mm cell, as on the civilian plates.
   static const double milSlotTop = 44;
   static const double milSlotHeight = 94;
 
@@ -149,7 +137,7 @@ abstract final class _Layout {
   static const double policeSlotHeight = 76;
 }
 
-/// Indonesia's 2023-series geometries.
+/// The 2023-series geometries.
 ///
 /// * [car] — 460×135, FE-Schrift serial over a centred `MM · YY` expiry row.
 /// * [motorcycle] — 275×115, DIN serial over a right-aligned expiry row.
@@ -189,10 +177,9 @@ abstract final class _Layout {
 ///   serial (ink y 76–125, centres 190.5 226 261.5 297, dash 332, suffix 368
 ///   404). Upright 133–140.
 ///
-/// The crests are PNG decals cut from the Commons insignia SVGs and recoloured
-/// yellow; the star, anchor and roundel are drawn shapes, shipped as PNGs
-/// because a decal is the only way to put an image above the background.
-/// The Air Force roundel's height is estimated: its photograph is skewed.
+/// The crests, star, anchor and roundel are PNG decals because a decal is the
+/// only way to put an image above the background. The Air Force roundel's
+/// height is estimated: its photograph is skewed.
 ///
 /// Not implemented: the former (pre-2023) designs; the Ministry of Defence,
 /// prosecution-service, House and `RI`/`INDONESIA` plates, known only from
@@ -211,7 +198,6 @@ abstract final class IndonesiaPlates {
     motorcycle: true,
   );
 
-  /// `CD`/`CC`, the mission's number and the vehicle's, each 1–3 digits.
   static final PlateSpec diplomatic = _diplomaticSpec();
 
   static final Map<IndonesiaService, PlateSpec> _mil =
@@ -221,11 +207,10 @@ abstract final class IndonesiaPlates {
   static PlateSpec military(IndonesiaService service) =>
       _mil[service] ??= _militarySpec(service);
 
-  /// A Polri plate; the number is 4–5 digits.
   static final PlateSpec police = _policeSpec();
 
-  /// Letter spacing that puts a run of [length] characters at [pitch] instead
-  /// of the font's advance.
+  /// Letter spacing that puts characters at [pitch] instead of the font's
+  /// advance.
   static double _spacing(double pitch, double height) =>
       max(0, pitch - 0.6 * 0.72 * height);
 

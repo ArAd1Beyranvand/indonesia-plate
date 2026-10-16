@@ -35,29 +35,26 @@ abstract final class IndonesiaThemes {
     alertColor: const Color(0xFFD32F2F),
   );
 
-  /// Black on white: private vehicles, private trucks and ambulances. Also the
-  /// Greater Jakarta temporary `SS…` plates, which differ only in suffix.
+  /// Also the Greater Jakarta temporary `SS…` plates, which differ only in
+  /// suffix.
   static final PlateTheme private = _livery(
     field: IndonesiaColors.white,
     ink: IndonesiaColors.black,
     inactive: IndonesiaColors.inactiveOnLight,
   );
 
-  /// Black on yellow: buses, taxis, angkot and commercial trucks.
   static final PlateTheme public = _livery(
     field: IndonesiaColors.publicYellow,
     ink: IndonesiaColors.black,
     inactive: IndonesiaColors.inactiveOnLight,
   );
 
-  /// White on red: government vehicles.
   static final PlateTheme government = _livery(
     field: IndonesiaColors.governmentRed,
     ink: IndonesiaColors.white,
     inactive: IndonesiaColors.inactiveOnDark,
   );
 
-  /// Black on green: vehicles restricted to a free-trade zone.
   static final PlateTheme freeTradeZone = _livery(
     field: IndonesiaColors.ftzGreen,
     ink: IndonesiaColors.black,
@@ -92,7 +89,6 @@ abstract final class IndonesiaThemes {
     band: IndonesiaColors.evBlue,
   );
 
-  /// Black on white over a black trim band.
   static final PlateTheme diplomatic = _livery(
     field: IndonesiaColors.white,
     ink: IndonesiaColors.black,
@@ -100,7 +96,6 @@ abstract final class IndonesiaThemes {
     band: IndonesiaColors.black,
   );
 
-  /// White on black over the EV blue band.
   static final PlateTheme diplomaticEv = _livery(
     field: IndonesiaColors.black,
     ink: IndonesiaColors.white,
@@ -126,15 +121,12 @@ abstract final class IndonesiaThemes {
   /// Army (TNI-AD): a 14 mm rim, twice the other services'.
   static final PlateTheme army = _service(IndonesiaColors.armyGreen, 14);
 
-  /// Navy (TNI-AL).
   static final PlateTheme navy = _service(IndonesiaColors.navyBlue, 9);
 
-  /// Air Force (TNI-AU).
   static final PlateTheme airForce = _service(IndonesiaColors.airForceBlue, 9);
 
   /// TNI headquarters: the field is the crest square's red.
   static final PlateTheme armedForces = _service(IndonesiaColors.serviceRed, 9);
 
-  /// National Police (Polri).
   static final PlateTheme police = _service(IndonesiaColors.policeBlack, 6.5);
 }
