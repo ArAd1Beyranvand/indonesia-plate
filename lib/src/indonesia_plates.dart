@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:plate_core/plate_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:plate_core/plate_core.dart';
 
 import 'indonesia_alphabets.dart';
 import 'indonesia_colors.dart';
@@ -31,9 +31,8 @@ import 'indonesia_services.dart';
 /// 119 mm slot centred at y 48 — off the top of the plate. Slots are as tall
 /// as the canvas allows about the measured centre. The car serial is also
 /// narrower here than FE-Schrift: DejaVu Bold is wider, and the glyph is
-/// width-limited by its cell. `plate_core` is unchanged.
-/// Taller slots would not help: the glyphs already fill their cells' width,
-/// so the shortfall closes only with a condensed face in the host's theme.
+/// width-limited by its cell, so taller slots would not help: the shortfall
+/// closes only with a condensed face in the host's theme.
 abstract final class _Layout {
   // Car, 460×135.
   static const double carWidth = 460;
