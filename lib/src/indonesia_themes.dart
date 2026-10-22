@@ -23,12 +23,13 @@ abstract final class IndonesiaThemes {
     required Color ink,
     required Color inactive,
     Color? band,
+    double borderWidthRatio = _borderWidthRatio,
   }) => PlateTheme(
     plateBackground: field,
     plateBorder: ink,
     ink: ink,
     dividerColor: band ?? ink,
-    borderWidthRatio: _borderWidthRatio,
+    borderWidthRatio: borderWidthRatio,
     plateRadiusRatio: _plateRadiusRatio,
     activeColor: ink,
     inactiveColor: inactive,
@@ -106,16 +107,11 @@ abstract final class IndonesiaThemes {
   /// Yellow on a service colour, yellow rim and divider. [rim] is the
   /// service's measured rim on the 138 mm plate, which is also its
   /// `IndonesiaService.rim`, so the emblem's margin follows the border.
-  static PlateTheme _service(Color field, double rim) => PlateTheme(
-    plateBackground: field,
-    plateBorder: IndonesiaColors.serviceYellow,
+  static PlateTheme _service(Color field, double rim) => _livery(
+    field: field,
     ink: IndonesiaColors.serviceYellow,
-    dividerColor: IndonesiaColors.serviceYellow,
+    inactive: IndonesiaColors.inactiveOnDark,
     borderWidthRatio: rim / 138,
-    plateRadiusRatio: _plateRadiusRatio,
-    activeColor: IndonesiaColors.serviceYellow,
-    inactiveColor: IndonesiaColors.inactiveOnDark,
-    alertColor: const Color(0xFFD32F2F),
   );
 
   /// Army (TNI-AD): a 14 mm rim, twice the other services'.

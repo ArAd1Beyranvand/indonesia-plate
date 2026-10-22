@@ -188,30 +188,21 @@ abstract final class _Layout {
 abstract final class IndonesiaPlates {
   static final PlateSpec car = _serialSpec(band: false, motorcycle: false);
   static final PlateSpec carEv = _serialSpec(band: true, motorcycle: false);
-  static final PlateSpec motorcycle = _serialSpec(
-    band: false,
-    motorcycle: true,
-  );
-  static final PlateSpec motorcycleEv = _serialSpec(
-    band: true,
-    motorcycle: true,
-  );
+  static final PlateSpec motorcycle = _serialSpec(band: false, motorcycle: true);
+  static final PlateSpec motorcycleEv = _serialSpec(band: true, motorcycle: true);
 
   static final PlateSpec diplomatic = _diplomaticSpec();
 
-  static final Map<IndonesiaService, PlateSpec> _mil =
-      <IndonesiaService, PlateSpec>{};
+  static final Map<IndonesiaService, PlateSpec> _mil = <IndonesiaService, PlateSpec>{};
 
   /// A TNI plate for [service]; the number is 4–5 digits.
-  static PlateSpec military(IndonesiaService service) =>
-      _mil[service] ??= _militarySpec(service);
+  static PlateSpec military(IndonesiaService service) => _mil[service] ??= _militarySpec(service);
 
   static final PlateSpec police = _policeSpec();
 
   /// Letter spacing that puts characters at [pitch] instead of the font's
   /// advance.
-  static double _spacing(double pitch, double height) =>
-      max(0, pitch - 0.6 * 0.72 * height);
+  static double _spacing(double pitch, double height) => max(0, pitch - 0.6 * 0.72 * height);
 
   static PlateDecal _asset(String file, PlateBox box) => PlateDecal(
     image: AssetImage('assets/$file', package: 'indonesia_plate'),
@@ -234,8 +225,7 @@ abstract final class IndonesiaPlates {
 
   /// `NNNNN-SS` centred on [centre], from [top]: slots, the dash and groups
   /// starting at slot [first]. The number is 4–5 digits.
-  static ({List<PlateSlot> slots, PlateLabel dash, List<PlateTextGroup> groups})
-  _serviceSerial({
+  static ({List<PlateSlot> slots, PlateLabel dash, List<PlateTextGroup> groups}) _serviceSerial({
     required double centre,
     required double top,
     required double height,
@@ -266,12 +256,7 @@ abstract final class IndonesiaPlates {
       ],
       dash: PlateLabel(
         text: '-',
-        box: PlateBox(
-          dashCentre - _Layout.dashWidth / 2,
-          top,
-          _Layout.dashWidth,
-          height,
-        ),
+        box: PlateBox(dashCentre - _Layout.dashWidth / 2, top, _Layout.dashWidth, height),
         glyphHeight: height,
       ),
       groups: <PlateTextGroup>[
@@ -326,10 +311,8 @@ abstract final class IndonesiaPlates {
   }
 
   static PlateSpec _policeSpec() {
-    const double dividerEnd =
-        _Layout.policeDividerCentre + _Layout.policeDividerWidth / 2;
-    const double fieldCentre =
-        (dividerEnd + _Layout.carWidth - _Layout.policeRim) / 2;
+    const double dividerEnd = _Layout.policeDividerCentre + _Layout.policeDividerWidth / 2;
+    const double fieldCentre = (dividerEnd + _Layout.carWidth - _Layout.policeRim) / 2;
     final serial = _serviceSerial(
       centre: fieldCentre,
       top: _Layout.policeSlotTop,
@@ -388,11 +371,10 @@ abstract final class IndonesiaPlates {
     );
   }
 
-  static PlateSection _background(double bandTop) =>
-      PlateSection.rows(<PlatePart>[
-        PlatePart(PlateSection.plain, end: bandTop),
-        const PlatePart(PlateSection.fill(PlateFill.divider)),
-      ]);
+  static PlateSection _background(double bandTop) => PlateSection.rows(<PlatePart>[
+    PlatePart(PlateSection.plain, end: bandTop),
+    const PlatePart(PlateSection.fill(PlateFill.divider)),
+  ]);
 
   /// `MM · YY` from [monthLeft] and [yearLeft]. [color] is null to follow the
   /// theme's ink.
@@ -417,12 +399,7 @@ abstract final class IndonesiaPlates {
     ],
     dot: PlateLabel(
       text: '•',
-      box: PlateBox(
-        dotCentre - _Layout.dotWidth / 2,
-        top,
-        _Layout.dotWidth,
-        height,
-      ),
+      box: PlateBox(dotCentre - _Layout.dotWidth / 2, top, _Layout.dotWidth, height),
       glyphHeight: _Layout.dotGlyph,
       color: color,
     ),
@@ -437,16 +414,10 @@ abstract final class IndonesiaPlates {
     final double width = motorcycle ? _Layout.motoWidth : _Layout.carWidth;
     final double height = motorcycle ? _Layout.motoHeight : _Layout.carHeight;
     final double pitch = motorcycle ? _Layout.motoPitch : _Layout.carPitch;
-    final double gapNumber = motorcycle
-        ? _Layout.motoGapNumber
-        : _Layout.carGap;
-    final double gapSuffix = motorcycle
-        ? _Layout.motoGapSuffix
-        : _Layout.carGap;
+    final double gapNumber = motorcycle ? _Layout.motoGapNumber : _Layout.carGap;
+    final double gapSuffix = motorcycle ? _Layout.motoGapSuffix : _Layout.carGap;
     final double top = motorcycle ? _Layout.motoSlotTop : _Layout.carSlotTop;
-    final double slotHeight = motorcycle
-        ? _Layout.motoSlotHeight
-        : _Layout.carSlotHeight;
+    final double slotHeight = motorcycle ? _Layout.motoSlotHeight : _Layout.carSlotHeight;
 
     // Each field is sized for its longest run: 1–2 letters, 1–4 digits and
     // 1–3 letters.
@@ -545,10 +516,7 @@ abstract final class IndonesiaPlates {
             _Layout.dipSlotHeight,
           ),
         ),
-        for (final double right in <double>[
-          _Layout.dipCountryRight,
-          _Layout.dipSerialRight,
-        ])
+        for (final double right in <double>[_Layout.dipCountryRight, _Layout.dipSerialRight])
           PlateSlot(
             alphabet: IndonesiaAlphabets.digits,
             box: PlateBox(
