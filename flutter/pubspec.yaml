@@ -1,7 +1,7 @@
 name: indonesia_plate
 description: "Indonesia's licence plates for plate_core: car, motorcycle, diplomatic, armed-forces and police plates, with usage and EV liveries and advisory validators."
 version: 0.2.0
-repository: https://github.com/ArAd1Beyranvand/indonesia-plate
+repository: https://github.com/ArAd1Beyranvand/indonesia-plate/tree/main/flutter
 resolution: workspace
 
 environment:
